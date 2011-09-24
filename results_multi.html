@@ -1,0 +1,28 @@
+﻿<html>
+  <head>
+    <link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
+    <title>Find common LJ friends</title>
+    <meta charset="utf-8" />
+  </head>
+  <body>
+    Compared users: {{usernames}}<br />
+    <br />
+    Common friends ({{common_fs_len}}):<br />
+    <br />
+    {% autoescape off %}
+      {{common_friends}}
+    {% endautoescape %}
+    <br />
+    <br />
+    <br />
+    Common friend-ofs ({{common_fofs_len}}):<br />
+    <br />
+    {% autoescape off %}
+      {{common_friendofs}}
+    {% endautoescape %}
+    <br />
+    <br />
+    <br />
+    <a href="/compare_multi.html">Get back (to where you once belonged)</a>
+  </body>
+</html>

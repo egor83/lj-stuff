@@ -1,0 +1,8 @@
+# auxiliary directories/files
+.svn
+.idea
+
+# generated files
+*.pyc
+
+# misc

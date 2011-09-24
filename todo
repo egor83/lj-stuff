@@ -1,0 +1,87 @@
+- fix PyCharm warnings;
+- refactor stuff: make comparer a separate module, like in HN stuff;
+
+- multi UI:
+  - create a separate version;
+  - NB review and update title/etc in a new UI (now using text from the paired version);
+  - later make paired version a particular case of a multi UI;
+- logs: add a line for performing the comparsion, to separate from all the other log records;
+- recommend friends: show persons most people in your friend list read;
+
+1/2 DONE - compare 3+ users' friend lists;
+- limit the amount of users for comparison;
+- start with the shortest?;
+- implement a delay when fetching the data from LJ to prevent banning (look up the guidelines);
+- multi: (how?) show common friends/fofs for subgroups of a given group; (eg if 4 ppl don't have anyone in common fs/fofs, show for all possible subgroups of 3)
+
+- random: given a user, randomly select three of his friends, find common for them;
+
+- wrong username - catch&handle for both cases (pair&multi);
+- current fetching function would just fail silently after three DownloadErrors - fix; use gae-fetch from gae-tools
+- handle reloading results page w/o the posted data (now displays empty page)
+- NB "free_attorney" twice - strip() username; NB f-f and f_f
+
+- find your 'closest'/'farthest' friends by sorting your list of friends by the amount of common friends/friend-ofs;
+
+- counter - memcache + increment;
+- should I close opener once URL is fetched? (open + with)
+- documenting functions, re-read style guide (PEP 8 - start with "Whitespace in Expressions and Statements")
+- a lot of long strings, any better way to handle it?
+- change language from GET argument to one of POST? (from IRC - session data (cookies?))
+- (?) replace existing algorithm with a call to multi with only 2 usernames;
+
+
+???
+- why does Django escape stuff for multi, but not for pair? code is copy-pasted;
+
+
+Later:
+- translate w/ cookies;
+- LJ feed doesn't contain memorial journals and following sites; friends' numbers displayed on page (drugoi: 62080)
+    are different from Yandex (61158), real output on page (4789) and in a feed (2379) are again different;
+- MIME type for favicon? ("Could not guess mimetype for static/images/favicon.ico" when deploying)
+- google data model - list of strings? See comments in the code;
+- (unit)tests;
+- meta keywords?
+- Stripped prohibited headers from URLFetch request: ['Host']
+- handle Cyrillic input in username fields
+- add a note that LJ might not always give the full information or that the user can choose to hide who reads him;
+
+
+
+
+
+Publishing:
+http://aradan.livejournal.com/213678.html?page=8&style=mine#comments
+http://community.livejournal.com/ljournalist/
+http://ljplus.ru/communities/90/
+add_me_ru
+
+
+HISTORY:
+v. 1-1 - comparing multiple users added; lacks limits on number of users, pauses when fetching users' data from LJ etc
+
+
+DONE:
+- favicon
+- html - button, passing data via post or get+arguments - try out
+- add logging: when and who accessed the site; when and what queries were made to LJ;
+- add titles;
+- read about exceptions
+- test exceptions
+- error handling - wrap it in try...except and log the exceptions; (see http://stackoverflow.com/questions/5262146/when-to-use-try-except-blocks-in-gae)
+- error handling - eg getting banned;
+- fails on URL fetching sometimes, Google points to request to itself/more than one request at a time,
+    but I'm sure I don't have two simultaneously
+    http://stackoverflow.com/questions/2022566/googleappengine-urlfetch-timeout-exception
+    http://osdir.com/ml/GoogleAppEngine/2009-02/msg00240.html
+- translate;
+- empty friend lists - ok
+- LJ profile page doesn't show the full list of friends (what about feed? - check drugoi, tema) - dupe
+- GAE fetches favicon 4 times; why and should I worry about it? (NB - 1 time for GET, page build from HTML, 4 times for post, page is written directly into output, but nore than 4 times; change result into html too and compare - DONE: once or twice now)
+IRR - make a note if a user has hidden his list of friends - how do I know?
+- get rid of this warning:
+    You are using the default Django version (0.96). The default Django version will change in an App Engine release in the near future. 
+    Please call use_library() to explicitly select a Django version. For more information see 
+    http://code.google.com/appengine/docs/python/tools/libraries.html#Django
+    A: http://bit.ly/hioy0v

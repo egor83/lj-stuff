@@ -1,0 +1,16 @@
+body {
+  font-family: Verdana, Helvetica, sans-serif;
+  background-color: #EEEEEE;
+	font-size: small;
+  }
+table {
+	font-size: small;
+  }
+h1 {
+	font-size: x-large;
+	margin-bottom: 0.25ex;
+	}
+h2 {
+	font-size: large;
+	margin-bottom: 0.25ex;
+	}

@@ -1,0 +1,19 @@
+application: lj-stuff
+version: 1-1
+runtime: python
+api_version: 1
+
+handlers:
+
+- url: /favicon.ico
+  static_files: static/images/favicon.ico
+  upload: static/images/favicon.ico
+
+- url: /stylesheets
+  static_dir: stylesheets
+  
+- url: /translations
+  script: compare-friends.py
+
+- url: /.*
+  script: compare-friends.py
